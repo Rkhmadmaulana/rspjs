@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_file_news', function (Blueprint $table) {
+        Schema::create('tb_antrians', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tb_news_id')->constrained('tb_news')->cascadeOnDelete();
-            $table->string('nm_file_news');
+            $table->date('tanggal');
+            $table->string('no_antrian');
+            $table->boolean('status')->default(true);
+            $table->dateTime('update_date');
+            $table->string('jenis_antrian');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_file_news');
+        Schema::dropIfExists('tb_antrians');
     }
 };
