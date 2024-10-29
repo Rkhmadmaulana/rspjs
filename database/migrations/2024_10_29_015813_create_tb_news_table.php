@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('tb_news', function (Blueprint $table) {
             $table->id();
+            $table->string('nm_news');
+            $table->string('news');
+            $table->enum('category_news', ['berita', 'jadwal']);
+            $table->integer('view_news');
+            $table->dateTime('date_news');
+            $table->boolean('hidden_news')->default(false);
+            $table->boolean('pin_news')->default(false);
             $table->timestamps();
         });
     }
