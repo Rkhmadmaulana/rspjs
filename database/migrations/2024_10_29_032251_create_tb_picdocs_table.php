@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_file_news', function (Blueprint $table) {
+        Schema::create('tb_picdocs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tb_news_id')->constrained('tb_news')->cascadeOnDelete();
-            $table->string('nm_file_news');
+            $table->foreignId('tb_dokter_id')->constrained('tb_dokters')->cascadeOnDelete(); 
+            $table->string('nm_file_picdoc');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_file_news');
+        Schema::dropIfExists('tb_picdocs');
     }
 };
