@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('tb_dokter_id')->constrained('tb_dokters')->cascadeOnDelete(); 
             $table->string('poliklinik');
-            $table->enum('hari_kerja');
+            $table->enum('hari_kerja', ['senin','selasa','rabu','kamis','jumat']);
             $table->time('jam_mulai');
             $table->time('jam_selesai');
             $table->timestamps();
