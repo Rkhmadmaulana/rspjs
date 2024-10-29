@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('nm_news');
             $table->string('news');
             $table->enum('category_news', ['berita', 'jadwal']);
-            $table->integer('view_news');
+            $table->integer('view_news')->nullable();
             $table->dateTime('date_news');
-            $table->boolean('hidden_news')->default(false);
-            $table->boolean('pin_news')->default(false);
+            $table->boolean('hidden_news')->default(false)->nullable();
+            $table->boolean('pin_news')->default(false)->nullable();
             $table->timestamps();
         });
     }
