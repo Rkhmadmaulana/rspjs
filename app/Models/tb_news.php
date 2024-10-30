@@ -14,6 +14,7 @@ class tb_news extends Model
         'view_news',
         'date_news',
         'hidden_news',
-        'pin_news'
+        'pin_news',
+        'image'
     ];
 }

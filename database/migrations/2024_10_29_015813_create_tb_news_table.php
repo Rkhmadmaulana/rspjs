@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('date_news');
             $table->boolean('hidden_news')->default(false)->nullable();
             $table->boolean('pin_news')->default(false)->nullable();
+            $table->string('image')->nullabel();
             $table->timestamps();
         });
     }

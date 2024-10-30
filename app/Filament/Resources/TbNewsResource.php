@@ -10,10 +10,17 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\FileUpload;
+// use Filament\Tables\Columns\CheckboxColumn;
+// use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\ToggleColumn;
 
 
 class TbNewsResource extends Resource
@@ -45,7 +52,20 @@ class TbNewsResource extends Resource
                 Forms\Components\RichEditor::make('news')
                 ->label('Isi Berita')
                 ->required()
-                ->columnSpan('2')
+                ->columnSpan('2'),
+                Forms\Components\FileUpload::make('image')
+                ->label('Upload File')
+                ->disk('public')
+                ->directory('uploads')
+                ->image()
+                ->maxSize(1024)
+                // ->multiple()
+                ->openable()
+                ->columnSpan('2'),
+                // Toggle::make('pin_news')
+                // ->label('Pin Berita')
+                // ->onColor('success')
+                // ->offColor('danger')
             ]);
     }
 
@@ -54,16 +74,33 @@ class TbNewsResource extends Resource
         return $table
             ->columns([
                 //
+                TextColumn::make('nm_news')
+                ->label('Nama Berita'),
+                TextColumn::make('category_news')
+                ->label('Kategori Berita'),
+                TextColumn::make('date_news')
+                ->label('Tanggal Berita'),
+                ImageColumn::make('image')
+                ->label('File Berita')
+                ->square()
+                ->width(200)
+                ->height(150)
+                ->disk('public'),
+                // ->defaultImageUrl(url('public/storage/uploads/01JBDNRFMC3F0F3WNPZ3TKGDPV.png'))
+                ToggleColumn::make('pin_news')
+                ->label('Pin Berita')
+
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
