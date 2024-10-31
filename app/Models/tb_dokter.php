@@ -26,4 +26,8 @@ class tb_dokter extends Model
                 'update_at'
 
         ];
+        public function tb_jadwal_dokter(): HasMany
+        {
+            return $this->hasMany(tb_jadwal_dokter::class);
+        }
 }

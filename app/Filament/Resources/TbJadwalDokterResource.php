@@ -69,7 +69,7 @@ class TbJadwalDokterResource extends Resource
         return $table
             ->columns([
                 //
-                TextColumn::make('tbdokter.nm_dokter')
+                TextColumn::make('tb_dokter.nm_dokter')
                 ->label('Nama Dokter'),
                 TextColumn::make('poliklinik')
                 ->label('Poliklinik'),

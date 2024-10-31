@@ -16,12 +16,9 @@ class tb_jadwal_dokter extends Model
         'jam_mulai',
         'jam_selesai'
     ];
-    public function tbdokter(): BelongsTo
+    public function tb_dokter(): BelongsTo
     {
         return $this->belongsTo(tb_dokter::class);
     }
-    // public function TbJadwalDokter(): HasMany
-    // {
-    //     return $this->hasMany(tb_jadwal_dokter::class);
-    // }
+    
 }

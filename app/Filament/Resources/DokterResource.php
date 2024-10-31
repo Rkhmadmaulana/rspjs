@@ -24,6 +24,7 @@ use Filament\Tables\Columns\CheckboxColumn;
 class DokterResource extends Resource
 {
     protected static ?string $model = tb_dokter::class;
+    protected static ?string $modelLabel = 'Dokter';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -70,7 +71,7 @@ class DokterResource extends Resource
                 Forms\Components\FileUpload::make('image')
                 ->label('Upload Foto Dokter')
                 ->disk('public')
-                ->directory('uploads')
+                ->directory('uploads/pic_doc')
                 ->image()
                 ->maxSize(1024)
                 ->openable()
@@ -95,7 +96,7 @@ class DokterResource extends Resource
                 TextColumn::make('no_ijin_praktek')
                 ->label('No Izin Praktek'),
                 ImageColumn::make('image')
-                ->label('File Berita')
+                ->label('Foto Dokter')
                 ->square()
                 ->width(200)
                 ->height(150)
