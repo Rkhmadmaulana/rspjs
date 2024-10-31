@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('kd_sps');
             $table->string('alumni');
             $table->string('no_ijin_praktek');
+            $table->string('image')->nullabel();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
