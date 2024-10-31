@@ -9,6 +9,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -18,6 +19,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Toggle;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\ToggleColumn;
+use Filament\Tables\Columns\CheckboxColumn;
 
 class DokterResource extends Resource
 {
@@ -39,6 +41,47 @@ class DokterResource extends Resource
                     'Perempuan' => 'Perempuan',  
                 ])
                 ->required(),
+                Forms\Components\TextInput::make('tmp_lahir')
+                ->label('Tempat Lahir')
+                ->required(),
+                Forms\Components\DatePicker::make('tgl_lahir')
+                ->label('Tanggal Lahir')
+                ->required(),
+                Forms\Components\TextInput::make('almt_tgl')
+                ->label('Alamat Tinggal')
+                ->required()
+                ->columnSpan(2),
+                Forms\Components\TextInput::make('agama')
+                ->label('Agama'),
+                Forms\Components\TextInput::make('no_telp')
+                ->label('No. Telepon'),
+                Forms\Components\TextInput::make('alumni')
+                ->label('Alumni'),
+                Forms\Components\TextInput::make('no_ijin_praktek')
+                ->label('No. Izin Praktek')
+                ->required(),
+                Forms\Components\Select::make('stts_nikah')
+                ->label('Status Pernikahan')
+                ->options([
+                    'Sudah' => 'Sudah',
+                    'Belum' => 'Belum',
+                ])
+                ->columnSpan(2),
+                Forms\Components\FileUpload::make('image')
+                ->label('Upload Foto Dokter')
+                ->disk('public')
+                ->directory('uploads')
+                ->image()
+                ->maxSize(1024)
+                ->openable()
+                ->columnSpan('2'),
+                Forms\Components\Select::make('kd_sps')
+                ->label('Kode Spesialis')
+                ->options([
+                    'umum' => 'Umum',
+                    'spesialis' => 'Spesialis',
+                ])
+                ->columnSpan(2)
             ]);
     }
 
@@ -47,6 +90,19 @@ class DokterResource extends Resource
         return $table
             ->columns([
                 //
+                TextColumn::make('nm_dokter')
+                ->label('Nama Dokter'),
+                TextColumn::make('no_ijin_praktek')
+                ->label('No Izin Praktek'),
+                ImageColumn::make('image')
+                ->label('File Berita')
+                ->square()
+                ->width(200)
+                ->height(150)
+                ->disk('public'),
+                // ->defaultImageUrl(url('public/storage/uploads/01JBDNRFMC3F0F3WNPZ3TKGDPV.png'))
+                CheckboxColumn::make('status')
+                ->label('Status Dokter')
             ])
             ->filters([
                 //
