@@ -12,6 +12,12 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Forms\Components\FileUpload;
+// use Filament\Tables\Columns\CheckboxColumn;
+// use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\ToggleColumn;
 
 class DokterResource extends Resource
 {
@@ -23,7 +29,16 @@ class DokterResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nm_dokter')
+                ->label('Nama Lengkap Dokter')
+                ->required(),
+                Forms\Components\Select::make('jk')
+                ->label('Jenis Kelamin')
+                ->options([
+                    'Laki-laki' => 'Laki-laki',
+                    'Perempuan' => 'Perempuan',  
+                ])
+                ->required(),
             ]);
     }
 
