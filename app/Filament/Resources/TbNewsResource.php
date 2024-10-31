@@ -27,7 +27,7 @@ class TbNewsResource extends Resource
 {
     protected static ?string $model = tb_news::class;
 
-    protected static ?string $modelLabel = 'News';
+    protected static ?string $modelLabel = 'Berita';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
